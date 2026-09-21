@@ -1,0 +1,275 @@
+/**
+ * @name Midnight Glass (Pink Frost Edition)
+ * @author Custom / Refact0r
+ * @description Production-ready Midnight theme layout with custom pink accents, frosted glass effects, and fixes for voice messages & user profile popouts.
+ * @version 1.3.0
+ */
+
+/* ==========================================================================
+   1. EXTERNAL IMPORTS
+   ========================================================================== */
+
+/* Inter Font (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Base Midnight Theme Core */
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+
+/* ==========================================================================
+   2. GLOBAL THEME CONFIGURATION
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     A. COLOR PALETTE (Pink Accents)
+     ------------------------------------------------------------------------ */
+  --colors: on;
+
+  /* Accent Scale (Light to Dark) */
+  --accent-1: hsl(335, 100%, 78%); /* Primary Highlights, Active States & Badges */
+  --accent-2: hsl(335, 90%, 70%);  /* Main Buttons, Play Controls & Icons */
+  --accent-3: hsl(335, 75%, 60%);  /* Deep Accent Tone */
+  --accent-4: hsl(335, 60%, 50%);  /* Subtle Hover Indicators & Borders */
+  --accent-5: hsl(335, 50%, 38%);  /* Dark Accent Base */
+
+  /* Mention Highlights */
+  --mention-tint: rgba(255, 112, 166, 0.15);
+  --mention-hover: rgba(255, 112, 166, 0.25);
+
+  /* Typography Colors */
+  --text-1: hsl(330, 20%, 96%); /* Primary Heading/Body Text */
+  --text-2: hsl(330, 15%, 80%); /* Secondary Subtext */
+  --text-3: hsl(330, 10%, 65%); /* Muted/Disabled Labels */
+
+  /* Panel Background Transparency Overlays */
+  --bg-1: rgba(18, 16, 22, 0.82);
+  --bg-2: rgba(14, 12, 18, 0.75);
+  --bg-3: rgba(10, 8, 13, 0.68);
+  --bg-4: rgba(6, 5, 8, 0.58);
+
+  /* Hover & Selected States */
+  --hover: rgba(255, 112, 166, 0.08);
+  --active: rgba(255, 112, 166, 0.16);
+
+  /* ------------------------------------------------------------------------
+     B. WALLPAPER & FROSTED GLASS EFFECTS
+     ------------------------------------------------------------------------ */
+  --background-image: on;
+  --background-image-url: url('https://i.imgur.com/h7t8o6u.jpeg');
+
+  /* Glassmorphism Blur Strength (Adjust pixel value to increase/decrease blur) */
+  --glass-blur: 3px;
+  --glass-saturation: 140%;
+
+  /* Transparency & Panel Options */
+  --transparency-tweaks: on;
+  --remove-bg-layer: off;
+  --panel-blur: on;
+
+  /* ------------------------------------------------------------------------
+     C. TYPOGRAPHY
+     ------------------------------------------------------------------------ */
+  --font: 'Inter', 'gg sans', 'Noto Sans', sans-serif;
+  --code-font: 'Fira Code', monospace;
+
+  /* ------------------------------------------------------------------------
+     D. MIDNIGHT LAYOUT OVERRIDES (Attached Edge-to-Edge Style)
+     ------------------------------------------------------------------------ */
+  --gap: 0px;                     /* Zero gap removes floating panel spacing */
+  --window-padding: 0px;          /* Extends interface edge-to-edge */
+  --border-thickness: 0px;        /* Removes hard outlines between panels */
+  --divider-thickness: 2px;
+
+  /* Animation Controls */
+  --animations: on;
+  --list-item-transition: 0.2s ease;
+  --dms-icon-svg-transition: 0.4s ease;
+  --border-hover-transition: 0.2s ease;
+
+  /* Top Bar & Titlebar Settings */
+  --top-bar-height: 24px;
+  --top-bar-button-position: titlebar;
+  --top-bar-title-position: off;
+  --subtle-top-bar-title: off;
+
+  /* Custom Window Controls */
+  --custom-window-controls: on;
+  --window-control-size: 14px;
+
+  /* Custom Direct Messages Button Icon */
+  --custom-dms-icon: custom;
+  --dms-icon-svg-url: url('https://refact0r.github.io/midnight-discord/assets/Font_Awesome_5_solid_moon.svg');
+  --dms-icon-svg-size: 90%;
+  --dms-icon-color-before: var(--accent-3);
+  --dms-icon-color-after: var(--accent-1);
+  --custom-dms-background: off;
+
+  /* Chatbar & User Panel Settings */
+  --custom-chatbar: off;
+  --chatbar-height: 47px;
+  --small-user-panel: on;
+}
+
+
+/* ==========================================================================
+   3. BASE LAYOUT & FROSTED GLASS SURFACES
+   ========================================================================== */
+
+body {
+  font-weight: 400;
+}
+
+/* Frosted glass effect across main application panels */
+.chat__5e434,
+.sidebar__5e434,
+.container__5e434,
+.panels__5e434,
+.privateChannels__5e434 {
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
+}
+
+/* Server sidebar container & channel list separation */
+.sidebar__5e434,
+.guilds__5e434 {
+  background-color: rgba(11, 9, 14, 0.88) !important;
+  border-right: 1px solid rgba(255, 112, 166, 0.15) !important;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Prevent unwanted double backgrounds on scrollable areas */
+.scroller_ef3116 {
+  background-color: transparent !important;
+}
+
+
+/* ==========================================================================
+   4. VOICE MESSAGE COMPONENT FIXES
+   ========================================================================== */
+
+/* Outer voice message player box (Preserves dark pink background on play/active) */
+.container_a8e786,
+.container_a8e786:active,
+.container_a8e786:focus,
+.container_a8e786:focus-within,
+.container_a8e786[class*="playing"] {
+  background-color: rgba(35, 18, 28, 0.88) !important;
+  border: 1px solid rgba(255, 112, 166, 0.3) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+/* Play/Pause Button States */
+.playButtonContainer_a8e786,
+.playButtonContainer_a8e786:active,
+.playButtonContainer_a8e786:focus {
+  background-color: var(--accent-2) !important;
+}
+
+.playButtonContainer_a8e786:hover {
+  background-color: var(--accent-1) !important;
+}
+
+.playIcon_a8e786 path {
+  fill: #0d090e !important;
+}
+
+/* Audio Waveform & Ripple Animation Colors */
+.waveform_a8e786 {
+  color: var(--accent-2) !important;
+}
+
+.ripple_a8e786 {
+  background-color: rgba(255, 112, 166, 0.2) !important;
+}
+
+/* Progress bar & Volume bar grabbers */
+.mediaBarProgress_b26b79,
+.mediaBarProgress_b26b79::before,
+.mediaBarProgress_b26b79::after {
+  background-color: var(--accent-2) !important;
+}
+
+.mediaBarGrabber_b26b79 {
+  background-color: var(--accent-1) !important;
+}
+
+/* Volume Slider Popup Card */
+.volumeButtonSlider__2d263 {
+  background-color: rgba(20, 10, 16, 0.95) !important;
+  border: 1px solid rgba(255, 112, 166, 0.2) !important;
+}
+
+/* Duration Timer & Volume Icons */
+.duration_a8e786,
+.playbackRate_a8e786,
+.volumeButtonIcon_a8e786 {
+  color: var(--accent-1) !important;
+}
+
+
+/* ==========================================================================
+   5. USER PROFILE POPOUTS & MODAL CARDS
+   ========================================================================== */
+
+/* Profile container & background overrides (Overpowers inline Discord gradient styles) */
+.outer_c0bea0,
+.user-profile-popout,
+.userProfileModalOuter__c0bea0 {
+  --profile-gradient-primary-color: rgba(30, 16, 25, 0.88) !important;
+  --profile-gradient-secondary-color: rgba(18, 10, 16, 0.92) !important;
+  --profile-gradient-overlay-color: rgba(0, 0, 0, 0.2) !important;
+  --profile-gradient-button-color: rgba(255, 112, 166, 0.15) !important;
+
+  background-color: rgba(22, 12, 18, 0.85) !important;
+  border: 1px solid rgba(255, 112, 166, 0.25) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(14px) saturate(var(--glass-saturation)) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(var(--glass-saturation)) !important;
+}
+
+/* Inner card sections & widgets */
+.inner_c0bea0,
+.body__5be3e,
+.overlay_c0bea0,
+.card__9d597 {
+  background-color: rgba(28, 14, 23, 0.6) !important;
+}
+
+/* Custom Status Input & Edit Bar */
+.outer_ab8609,
+.container_ab8609,
+.popover_c97e55 {
+  background-color: rgba(38, 18, 30, 0.75) !important;
+  border: 1px solid rgba(255, 112, 166, 0.2) !important;
+}
+
+/* Profile Buttons (Edit Profile, Add Note, etc.) */
+.button_a22cb0,
+.button_b730cc,
+.textButton__7a01b {
+  background-color: var(--accent-2) !important;
+  color: #0d090e !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.button_a22cb0:hover,
+.button_b730cc:hover,
+.textButton__7a01b:hover {
+  background-color: var(--accent-1) !important;
+}
+
+/* Keep SVG icons dark on bright pink buttons */
+.button_a22cb0 svg path,
+.button_b730cc svg path {
+  fill: #0d090e !important;
+}
+
+/* Server Tag Pills & Clan Badges */
+.chipletContainerInner__10651,
+.guildTagPill__26b1f {
+  background-color: rgba(255, 112, 166, 0.15) !important;
+  border: 1px solid rgba(255, 112, 166, 0.25) !important;
+}
