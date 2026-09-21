@@ -1,8 +1,8 @@
 /**
  * @name Midnight Glass (Pink Frost Edition)
  * @author Custom / Refact0r
- * @description Production-ready Midnight theme layout with custom pink accents, frosted glass effects, and fixes for voice messages & user profile popouts.
- * @version 1.3.0
+ * @description Production-ready Midnight theme layout with custom pink accents, frosted glass effects, and fixes for voice messages, user profile popouts, & autocomplete popups.
+ * @version 1.3.2
  */
 
 /* ==========================================================================
@@ -52,30 +52,31 @@
   --hover: rgba(255, 112, 166, 0.08);
   --active: rgba(255, 112, 166, 0.16);
 
-  /* ------------------------------------------------------------------------
-     B. WALLPAPER & FROSTED GLASS EFFECTS
-     ------------------------------------------------------------------------ */
-  --background-image: on;
-  --background-image-url: url('https://i.imgur.com/h7t8o6u.jpeg');
-
   /* Glassmorphism Blur Strength (Adjust pixel value to increase/decrease blur) */
   --glass-blur: 3px;
   --glass-saturation: 140%;
+}
+
+/* ------------------------------------------------------------------------
+   MIDNIGHT CORE CONFIGURATION (Must stay on body for core theme engine)
+   ------------------------------------------------------------------------ */
+body {
+  font-weight: 400;
+
+  /* Typography Stack */
+  --font: 'Inter', 'gg sans', 'Noto Sans', sans-serif;
+  --code-font: 'Fira Code', monospace;
+
+  /* Wallpaper Setup */
+  --background-image: on;
+  --background-image-url: url('https://i.imgur.com/h7t8o6u.jpeg');
 
   /* Transparency & Panel Options */
   --transparency-tweaks: on;
   --remove-bg-layer: off;
   --panel-blur: on;
 
-  /* ------------------------------------------------------------------------
-     C. TYPOGRAPHY
-     ------------------------------------------------------------------------ */
-  --font: 'Inter', 'gg sans', 'Noto Sans', sans-serif;
-  --code-font: 'Fira Code', monospace;
-
-  /* ------------------------------------------------------------------------
-     D. MIDNIGHT LAYOUT OVERRIDES (Attached Edge-to-Edge Style)
-     ------------------------------------------------------------------------ */
+  /* Midnight Layout Settings (Attached Edge-to-Edge Style) */
   --gap: 0px;                     /* Zero gap removes floating panel spacing */
   --window-padding: 0px;          /* Extends interface edge-to-edge */
   --border-thickness: 0px;        /* Removes hard outlines between panels */
@@ -115,10 +116,6 @@
 /* ==========================================================================
    3. BASE LAYOUT & FROSTED GLASS SURFACES
    ========================================================================== */
-
-body {
-  font-weight: 400;
-}
 
 /* Frosted glass effect across main application panels */
 .chat__5e434,
@@ -272,4 +269,42 @@ body {
 .guildTagPill__26b1f {
   background-color: rgba(255, 112, 166, 0.15) !important;
   border: 1px solid rgba(255, 112, 166, 0.25) !important;
+}
+
+
+/* ==========================================================================
+   6. AUTOCOMPLETE & EMOJI PICKER POPUPS
+   ========================================================================== */
+
+/* Main popup container background & glass blur */
+[data-list-id="channel-autocomplete"],
+.autocomplete__13533 {
+  background-color: rgba(18, 12, 20, 0.94) !important;
+  border: 1px solid rgba(255, 112, 166, 0.25) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(var(--glass-saturation)) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(var(--glass-saturation)) !important;
+}
+
+/* Section Header (e.g. "Emoji matching :fir") */
+.contentTitle__13533 {
+  color: var(--accent-1) !important;
+}
+
+/* Hover and Selected Row States */
+.autocompleteRow__13533:hover,
+.autocompleteRow__13533[aria-selected="true"] {
+  background-color: rgba(255, 112, 166, 0.18) !important;
+  border-radius: 8px !important;
+}
+
+/* Primary text inside rows */
+.autocompleteRowHeading__13533 {
+  color: var(--text-1) !important;
+}
+
+/* Secondary subtext inside rows (Server names) */
+.autocompleteRowContentSecondary__13533 {
+  color: var(--text-2) !important;
 }
