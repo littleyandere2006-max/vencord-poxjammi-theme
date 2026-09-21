@@ -2,7 +2,7 @@
  * @name Midnight Glass (Pink Frost Edition)
  * @author Custom / Refact0r
  * @description Production-ready Midnight theme layout with custom pink accents, frosted glass effects, and fixes for voice messages, user profile popouts, & autocomplete popups.
- * @version 1.3.2
+ * @version 1.3.6
  */
 
 /* ==========================================================================
@@ -52,13 +52,13 @@
   --hover: rgba(255, 112, 166, 0.08);
   --active: rgba(255, 112, 166, 0.16);
 
-  /* Glassmorphism Blur Strength (Adjust pixel value to increase/decrease blur) */
+  /* Glassmorphism Blur Strength */
   --glass-blur: 3px;
   --glass-saturation: 140%;
 }
 
 /* ------------------------------------------------------------------------
-   MIDNIGHT CORE CONFIGURATION (Must stay on body for core theme engine)
+   MIDNIGHT CORE CONFIGURATION
    ------------------------------------------------------------------------ */
 body {
   font-weight: 400;
@@ -76,10 +76,10 @@ body {
   --remove-bg-layer: off;
   --panel-blur: on;
 
-  /* Midnight Layout Settings (Attached Edge-to-Edge Style) */
-  --gap: 0px;                     /* Zero gap removes floating panel spacing */
-  --window-padding: 0px;          /* Extends interface edge-to-edge */
-  --border-thickness: 0px;        /* Removes hard outlines between panels */
+  /* Midnight Layout Settings */
+  --gap: 0px;
+  --window-padding: 0px;
+  --border-thickness: 0px;
   --divider-thickness: 2px;
 
   /* Animation Controls */
@@ -117,7 +117,6 @@ body {
    3. BASE LAYOUT & FROSTED GLASS SURFACES
    ========================================================================== */
 
-/* Frosted glass effect across main application panels */
 .chat__5e434,
 .sidebar__5e434,
 .container__5e434,
@@ -127,7 +126,6 @@ body {
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation));
 }
 
-/* Server sidebar container & channel list separation */
 .sidebar__5e434,
 .guilds__5e434 {
   background-color: rgba(11, 9, 14, 0.88) !important;
@@ -135,7 +133,6 @@ body {
   box-shadow: 2px 0 12px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Prevent unwanted double backgrounds on scrollable areas */
 .scroller_ef3116 {
   background-color: transparent !important;
 }
@@ -145,7 +142,6 @@ body {
    4. VOICE MESSAGE COMPONENT FIXES
    ========================================================================== */
 
-/* Outer voice message player box (Preserves dark pink background on play/active) */
 .container_a8e786,
 .container_a8e786:active,
 .container_a8e786:focus,
@@ -157,7 +153,6 @@ body {
   box-shadow: none !important;
 }
 
-/* Play/Pause Button States */
 .playButtonContainer_a8e786,
 .playButtonContainer_a8e786:active,
 .playButtonContainer_a8e786:focus {
@@ -172,7 +167,6 @@ body {
   fill: #0d090e !important;
 }
 
-/* Audio Waveform & Ripple Animation Colors */
 .waveform_a8e786 {
   color: var(--accent-2) !important;
 }
@@ -181,7 +175,6 @@ body {
   background-color: rgba(255, 112, 166, 0.2) !important;
 }
 
-/* Progress bar & Volume bar grabbers */
 .mediaBarProgress_b26b79,
 .mediaBarProgress_b26b79::before,
 .mediaBarProgress_b26b79::after {
@@ -192,13 +185,11 @@ body {
   background-color: var(--accent-1) !important;
 }
 
-/* Volume Slider Popup Card */
 .volumeButtonSlider__2d263 {
   background-color: rgba(20, 10, 16, 0.95) !important;
   border: 1px solid rgba(255, 112, 166, 0.2) !important;
 }
 
-/* Duration Timer & Volume Icons */
 .duration_a8e786,
 .playbackRate_a8e786,
 .volumeButtonIcon_a8e786 {
@@ -210,7 +201,6 @@ body {
    5. USER PROFILE POPOUTS & MODAL CARDS
    ========================================================================== */
 
-/* Profile container & background overrides (Overpowers inline Discord gradient styles) */
 .outer_c0bea0,
 .user-profile-popout,
 .userProfileModalOuter__c0bea0 {
@@ -227,7 +217,6 @@ body {
   -webkit-backdrop-filter: blur(14px) saturate(var(--glass-saturation)) !important;
 }
 
-/* Inner card sections & widgets */
 .inner_c0bea0,
 .body__5be3e,
 .overlay_c0bea0,
@@ -235,7 +224,6 @@ body {
   background-color: rgba(28, 14, 23, 0.6) !important;
 }
 
-/* Custom Status Input & Edit Bar */
 .outer_ab8609,
 .container_ab8609,
 .popover_c97e55 {
@@ -243,7 +231,6 @@ body {
   border: 1px solid rgba(255, 112, 166, 0.2) !important;
 }
 
-/* Profile Buttons (Edit Profile, Add Note, etc.) */
 .button_a22cb0,
 .button_b730cc,
 .textButton__7a01b {
@@ -258,13 +245,11 @@ body {
   background-color: var(--accent-1) !important;
 }
 
-/* Keep SVG icons dark on bright pink buttons */
 .button_a22cb0 svg path,
 .button_b730cc svg path {
   fill: #0d090e !important;
 }
 
-/* Server Tag Pills & Clan Badges */
 .chipletContainerInner__10651,
 .guildTagPill__26b1f {
   background-color: rgba(255, 112, 166, 0.15) !important;
@@ -276,7 +261,6 @@ body {
    6. AUTOCOMPLETE & EMOJI PICKER POPUPS
    ========================================================================== */
 
-/* Main popup container background & glass blur */
 [data-list-id="channel-autocomplete"],
 .autocomplete__13533 {
   background-color: rgba(18, 12, 20, 0.94) !important;
@@ -287,24 +271,34 @@ body {
   -webkit-backdrop-filter: blur(16px) saturate(var(--glass-saturation)) !important;
 }
 
-/* Section Header (e.g. "Emoji matching :fir") */
 .contentTitle__13533 {
   color: var(--accent-1) !important;
 }
 
-/* Hover and Selected Row States */
 .autocompleteRow__13533:hover,
 .autocompleteRow__13533[aria-selected="true"] {
   background-color: rgba(255, 112, 166, 0.18) !important;
   border-radius: 8px !important;
 }
 
-/* Primary text inside rows */
 .autocompleteRowHeading__13533 {
   color: var(--text-1) !important;
 }
 
-/* Secondary subtext inside rows (Server names) */
 .autocompleteRowContentSecondary__13533 {
   color: var(--text-2) !important;
+}
+
+
+/* ==========================================================================
+   7. ZERO-LAYOUT-SHIFT TEXT BACKGROUNDS
+   ========================================================================== */
+
+/* Target only inner message spans without changing display modes or layout bounds */
+.messageContent_c19a55 > span {
+  background-color: rgba(10, 8, 14, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(10, 8, 14, 0.5) !important;
+  border-radius: 4px !important;
+  box-decoration-break: clone !important;
+  -webkit-box-decoration-break: clone !important;
 }
