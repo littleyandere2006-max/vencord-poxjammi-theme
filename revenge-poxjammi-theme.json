@@ -14,7 +14,7 @@
   "rawColors": { "BRAND_200": "#FF8FB3", "BRAND_260": "#FF8FB3", "BRAND_300": "#FF70A6", "BRAND_360": "#FF70A6", "BRAND_400": "#E64D87", "BRAND_500": "#FF70A6", "PRIMARY_100": "#F5EBF0", "PRIMARY_200": "#CCADB8", "PRIMARY_300": "#A68A95", "PRIMARY_500": "#26121E", "PRIMARY_600": "#160C16", "PRIMARY_630": "#120C14", "PRIMARY_660": "#0B090E", "PRIMARY_700": "#0A080D", "PRIMARY_800": "#060508", "WHITE_500": "#F5EBF0", "BLACK_500": "#060508"
   },
   "background": {
-    "url": "https://i.imgur.com/h7t8o6u.jpeg",
+    "url": "https://i.imgur.com/mBRELwq.png",
     "alpha": 0.35,
     "blur": 0.5
   }
